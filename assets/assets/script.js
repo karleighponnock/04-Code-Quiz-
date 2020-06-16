@@ -9,6 +9,21 @@ var questions = [
         title: "Example Question 2:",
         choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
         answer: "Choice 3"
+    },
+    {
+        title: "Example Question 3:",
+        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+        answer: "Choice 3"
+    },
+    {
+        title: "Example Question 4:",
+        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+        answer: "Choice 3"
+    },
+    {
+        title: "Example Question 5:",
+        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+        answer: "Choice 3"
     }
 ];
 
@@ -24,7 +39,7 @@ var startText = document.createElement("h1");
 // create dynamic start button
 var startBtn = document.createElement("button");
 
-// create dynamic p tag to display and switch between questions
+// create dynamic p tag to display correct or incorrect
 var questionText = document.createElement("p");
 
 // declare global variables
@@ -93,9 +108,14 @@ function startQuiz() {
 
             // checkAnswer FUNCTION CREATED
             function checkAnswer(event) {
+
+
+        //if correct division line appears p tag will display correct 
                 if (event.target.matches(".choiceBtn")) {
-                    i++;
                     
+                 
+
+        //if incorrect division line appears p tag will display correct 
                     
                     nextQuestion();
                     // ..........if answered incorrectly....................
