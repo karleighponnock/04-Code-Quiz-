@@ -48,9 +48,8 @@ function startQuiz() {
     showTimer();
 
     //displays questions
-    //-----------------todo-create nextQuestion function-------/
     nextQuestion();
-
+}
 
 
     //showTimer FUNCTION CREATED//
@@ -67,7 +66,7 @@ function startQuiz() {
                 clearInterval(timeInterval)
             }
         }, 1000)
-
+    }
         // nextQuestion FUNCTION CREATED
         function nextQuestion() {
             // create cureent question variable
@@ -89,6 +88,19 @@ function startQuiz() {
                 answerDiv.appendChild(answerBtn);
             }
             containerEl.appendChild(answerDiv);
+        };
+    
+
+            // checkAnswer FUNCTION CREATED
+            function checkAnswer(event) {
+                if (event.target.matches(".choiceBtn")) {
+                    i++;
+                    
+                    
+                    nextQuestion();
+                    // ..........if answered incorrectly....................
+                }
+            }
 
 
         //if correct display correct + go to next question
@@ -104,9 +116,9 @@ function startQuiz() {
 
 
         //********___________________CLICKS________________________******** //
+        
         //START QUIZ BUTTON CLICK
         startBtn.addEventListener("click", startQuiz);
-
         //CLICK THAT CHECKS ANSWER FOR CORRECTNESS
         document.addEventListener("click", checkAnswer);
 
