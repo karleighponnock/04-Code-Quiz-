@@ -39,40 +39,58 @@ function openingPage() {
     containerEl.appendChild(startBtn);
 }
 
-//FUNCTION FOR WHEN START BUTTON IS CLICKED
+//____________________FUNCTIONS____________________//
 
+//FUNCTION FOR WHEN START BUTTON IS CLICKED//
 function startQuiz() {
-//DISPLAYS TIMER
+
+    //calls showTimer function
     showTimer();
-//DISPLAYS QUESTIONS
-//-----------------todo-create nextQuestion function-------/
-    nextQuestion(); 
 
-//Start timer with interval of 1 second
-
-//Display Question 1
-
-//if correct display correct + go to next question
-
-
-//if incorrect display incorrect + subtract 2 seconds from timer + go to next
-
-
-//Stop Quiz if timer runs out or all questions are complete
-
-//display results
+    //displays questions
+    //-----------------todo-create nextQuestion function-------/
+    nextQuestion();
 
 
 
+    //showTimer FUNCTION CREATED//
+    function showTimer() {
+
+        //text content
+        timerDisplay.textContent = timer;
+
+        // decreses interval by 1 per second and clears it when the timer runs out
+        var timeInterval = setInterval(function () {
+            timer--;
+            timerDisplay.textContent = timer;
+            if (timer === 0) {
+                clearInterval(timeInterval)
+            }
+        }, 1000)
+
+        //Display Question 1
+
+        //if correct display correct + go to next question
 
 
-//********--------CLICKS--------******** */
-//START QUIZ BUTTON CLICK
-startBtn.addEventListener("click", startQuiz);
-
-//CLICK THAT CHECKS ANSWER FOR CORRECTNESS
-document.addEventListener("click", checkAnswer);
+        //if incorrect display incorrect + subtract 2 seconds from timer + go to next
 
 
-//CALLS OPENING PAGE TO DISPLAY
-openingPage()
+        //Stop Quiz if timer runs out or all questions are complete
+
+        //display results
+
+
+
+
+
+        //********--------CLICKS--------******** */
+        //START QUIZ BUTTON CLICK
+        startBtn.addEventListener("click", startQuiz);
+
+        //CLICK THAT CHECKS ANSWER FOR CORRECTNESS
+        document.addEventListener("click", checkAnswer);
+
+
+        //CALLS OPENING PAGE TO DISPLAY
+        openingPage()
