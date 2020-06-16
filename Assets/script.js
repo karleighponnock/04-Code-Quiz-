@@ -39,7 +39,14 @@ function openingPage() {
     containerEl.appendChild(startBtn);
 }
 
-//Click start button
+//FUNCTION FOR WHEN START BUTTON IS CLICKED
+
+function startQuiz() {
+//DISPLAYS TIMER
+    showTimer();
+//DISPLAYS QUESTIONS
+//-----------------todo-create nextQuestion function-------/
+    nextQuestion(); 
 
 //Start timer with interval of 1 second
 
