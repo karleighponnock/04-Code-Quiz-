@@ -13,17 +13,23 @@ var questions = [
 ];
 
 // hook container element
+var containerEl = document.querySelector(".container");
 
 // hook timer element
+var timerDisplay = document.querySelector(".timer");
 
 // create dynamic H1 tag
+var startText = document.createElement("h1");
 
 // create dynamic start button
+var startBtn = document.createElement("button");
 
 // create dynamic p tag to display and switch between questions
+var questionText = document.createElement("p");
 
 // declare global variables
-
+var timer = 60;
+var i = 0;
 
 //Display Initial page
 
