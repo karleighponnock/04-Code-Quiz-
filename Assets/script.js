@@ -68,7 +68,28 @@ function startQuiz() {
             }
         }, 1000)
 
-        //Display Question 1
+        // nextQuestion FUNCTION CREATED
+        function nextQuestion() {
+            // create cureent question variable
+            var currentQuestion = questions[i];
+            // then empty question container
+            containerEl.textContent = "";
+            // add current question title to display
+            questionText.textContent = currentQuestion.title;
+            // append question to container
+            containerEl.appendChild(questionText);
+            //variable for correct answer
+            var answerDiv = document.createElement("div");
+            // Loop for remaining questions
+            for (let i = 0; i < currentQuestion.choices.length; i++) {
+            
+                var answerBtn = document.createElement("button");
+                answerBtn.classList.add("choiceBtn");
+                answerBtn.textContent = currentQuestion.choices[i];
+                answerDiv.appendChild(answerBtn);
+            }
+            containerEl.appendChild(answerDiv);
+
 
         //if correct display correct + go to next question
 
@@ -82,9 +103,7 @@ function startQuiz() {
 
 
 
-
-
-        //********--------CLICKS--------******** */
+        //********___________________CLICKS________________________******** //
         //START QUIZ BUTTON CLICK
         startBtn.addEventListener("click", startQuiz);
 
