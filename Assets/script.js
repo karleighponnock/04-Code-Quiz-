@@ -32,6 +32,11 @@ var timer = 60;
 var i = 0;
 
 //Display Initial page
+function openingPage() {
+    startText.textContent = "Welcome to the quiz!";
+    startBtn.textContent = "Start Here";
+    containerEl.appendChild(startText);
+    containerEl.appendChild(startBtn);
 
 //Click start button
 
@@ -48,3 +53,12 @@ var i = 0;
 //Stop Quiz if timer runs out or all questions are complete
 
 //display results
+
+
+
+
+
+
+
+
+openingPage()
