@@ -37,6 +37,7 @@ function openingPage() {
     startBtn.textContent = "Start Here";
     containerEl.appendChild(startText);
     containerEl.appendChild(startBtn);
+}
 
 //Click start button
 
@@ -58,7 +59,13 @@ function openingPage() {
 
 
 
+//********--------CLICKS--------******** */
+//START QUIZ BUTTON CLICK
+startBtn.addEventListener("click", startQuiz);
+
+//CLICK THAT CHECKS ANSWER FOR CORRECTNESS
+document.addEventListener("click", checkAnswer);
 
 
-
+//CALLS OPENING PAGE TO DISPLAY
 openingPage()
