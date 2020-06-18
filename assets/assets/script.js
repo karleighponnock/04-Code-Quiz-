@@ -1,7 +1,7 @@
 // create questions as objects\
 var questions = [
     {
-        title: "Example Question 1:",
+        title: "This is the first question:",
         choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
         answer: "Choice 1"
     },
@@ -42,11 +42,10 @@ var startBtn = document.createElement("button");
 // create dynamic p tag to display correct or incorrect
 var questionText = document.createElement("p");
 
-const answers = []
 
 // declare global variables
 var timer = 60;
-var i = 0;
+var qindex = 0;
 
 //Display Initial page
 function openingPage() {
@@ -60,7 +59,7 @@ function openingPage() {
 
 //FUNCTION FOR WHEN START BUTTON IS CLICKED//
 function startQuiz() {
-
+    qindex = 0;
     //calls showTimer function
     showTimer();
 
@@ -80,40 +79,45 @@ function showTimer() {
         timer--;
         timerDisplay.textContent = timer;
         if (timer === 0) {
+            function results(timer) {
+                var grade = document.createElement("p");
+                grade.textContent = message;
+                containerEl.append(grade);
+                var resultTimer = setTimeout(function () {
+                    grade.textContent = "";
+                })
+            }
             clearInterval(timeInterval)
+        }
+
+        if (questions.length) {
+         clearTimeout(timeInterval);
         }
     }, 1000)
 }
 // nextQuestion FUNCTION CREATED
 function nextQuestion() {
     // create current question variable
-    var currentQuestion = questions[i];
+    var currentQuestion = questions[qindex];
     // then empty question container
     containerEl.textContent = "";
+    var questionText = document.createElement("p");
     // add current question title to display
     questionText.textContent = currentQuestion.title;
+    console.log(currentQuestion.title);
     // append question to container
     containerEl.appendChild(questionText);
     //variable for correct answer
     var answerDiv = document.createElement("div");
     // Loop for remaining questions
     for (let i = 0; i < currentQuestion.choices.length; i++) {
-
-        //title: "Example Question 1:",
-        //choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        // answer: "Choice 1"
-
-        //if current answer is correct
+        //create buttons for answers
         var answerBtn = document.createElement("button");
         answerBtn.classList.add("choiceBtn");
         answerBtn.textContent = currentQuestion.choices[i];
-        if (currentQuestion.choices[i] === currentQuestion.answer) {
-            answerBtn.classList.add("correct");
-        }
         answerDiv.appendChild(answerBtn);
     }
     containerEl.appendChild(answerDiv);
-    i++
 };
 
 
@@ -121,19 +125,33 @@ function nextQuestion() {
 function checkAnswer(event) {
 
     //if correct division line appears p tag will display correct and i adds
-    console.log(`event target classes: ${event.target.classList}`)
- 
-    if (event.target.classList.contains("correct")) {
-        
-        
+    console.log(`button text ${event.target.textContent}`);
+    console.log(`actual answer ${questions[qindex].answer}`);
 
+    if (event.target.textContent === questions[qindex].answer) {
+        qindex++;
         nextQuestion();
-        // ..........if answered incorrectly....................
+        writeMessage("Correct!");
     }
+    else {
+        qindex++;
+        timer - 5;
+        nextQuestion();
+        writeMessage("Incorrect!");
+    }
+}
+
+function writeMessage(message) {
+    var grade = document.createElement("p");
+    grade.textContent = message;
+    containerEl.append(grade);
+    var resultTimer = setTimeout(function () {
+        grade.textContent = "";
+    }, 3000)
 
 }
 
-//if correct display correct + go to next question
+
 
 
 //if incorrect display incorrect + subtract 2 seconds from timer + go to next

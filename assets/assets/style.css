@@ -1,0 +1,9 @@
+questions {
+color:blue;
+text-align: center;
+}
+
+questions.title{
+    color: chocolate;
+    font-style: italic;
+}
