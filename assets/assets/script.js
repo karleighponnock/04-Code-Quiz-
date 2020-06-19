@@ -46,6 +46,7 @@ var questionText = document.createElement("p");
 // declare global variables
 var timer = 60;
 var qindex = 0;
+var timerId;
 
 //Display Initial page
 function openingPage() {
@@ -64,7 +65,18 @@ function startQuiz() {
     showTimer();
 
     //displays questions
-    nextQuestion();
+    if (qindex < 5) {
+        nextQuestion();
+    }
+
+    if (qindex === 5) {
+        document.querySelector(".container").innerHTML = ""
+        document.querySelector(".timer").innerHTML = ""
+        var scoresTitle = document.createElement("p").innerHTML = "High Scores!"
+        var highScores = document.createElement("input")
+        document.querySelector(".results").appendChild(p)
+    }
+
 }
 
 
@@ -75,7 +87,7 @@ function showTimer() {
     timerDisplay.textContent = timer;
 
     // decreses interval by 1 per second and clears it when the timer runs out
-    var timeInterval = setInterval(function () {
+    timerId = setInterval(function () {
         timer--;
         timerDisplay.textContent = timer;
         if (timer === 0) {
@@ -87,16 +99,14 @@ function showTimer() {
                     grade.textContent = "";
                 })
             }
-            clearInterval(timeInterval)
-        }
-
-        if (questions.length) {
-         clearTimeout(timeInterval);
+            clearInterval(timerId)
         }
     }, 1000)
 }
 // nextQuestion FUNCTION CREATED
+
 function nextQuestion() {
+    console.log("qindex: ", qindex)
     // create current question variable
     var currentQuestion = questions[qindex];
     // then empty question container
@@ -114,6 +124,7 @@ function nextQuestion() {
         //create buttons for answers
         var answerBtn = document.createElement("button");
         answerBtn.classList.add("choiceBtn");
+        answerBtn.addEventListener("click", checkAnswer);
         answerBtn.textContent = currentQuestion.choices[i];
         answerDiv.appendChild(answerBtn);
     }
@@ -128,16 +139,17 @@ function checkAnswer(event) {
     console.log(`button text ${event.target.textContent}`);
     console.log(`actual answer ${questions[qindex].answer}`);
 
-    if (event.target.textContent === questions[qindex].answer) {
-        qindex++;
-        nextQuestion();
-        writeMessage("Correct!");
-    }
-    else {
-        qindex++;
-        timer - 5;
-        nextQuestion();
-        writeMessage("Incorrect!");
+    if (qindex < 5) {
+        if (event.target.textContent === questions[qindex].answer) {
+            qindex++;
+            nextQuestion();
+            writeMessage("Correct!");
+        } else {
+            qindex++;
+            timer -= 5;
+            nextQuestion();
+            writeMessage("Incorrect!");
+        }
     }
 }
 
@@ -149,6 +161,13 @@ function writeMessage(message) {
         grade.textContent = "";
     }, 3000)
 
+}
+
+function clear() {
+    if (qindex > 5 || timer === 0) {
+        clearInterval(timerId);
+        console.log(timer);
+    }
 }
 
 
@@ -168,7 +187,8 @@ function writeMessage(message) {
 //START QUIZ BUTTON CLICK
 startBtn.addEventListener("click", startQuiz);
 //CLICK THAT CHECKS ANSWER FOR CORRECTNESS
-document.addEventListener("click", checkAnswer);
+console.log(document.querySelector(".choiceBtn"));
+
 
 
 //CALLS OPENING PAGE TO DISPLAY
