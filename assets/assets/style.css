@@ -55,8 +55,7 @@ p{
     text-align: center;
 }
 
-.message{
-    text-align: center;
+.message, .allScores{
     font-size: 25px;
     color:green;
 }
@@ -64,3 +63,25 @@ p{
 .input:focus{
 color: red;
 }
+
+
+table.scoresTable{
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+   
+}
+
+th{
+    font-size: 25px;
+    color: #4CAF50 ;
+    text-shadow: black;
+    text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+
+
