@@ -42,11 +42,18 @@ var startBtn = document.createElement("button");
 // create dynamic p tag to display correct or incorrect
 var questionText = document.createElement("p");
 
+var resultsPage = document.querySelector(".results");
+
+var highScores = document.querySelector(".highScores");
+
+var allScores = document.querySelector(".allScores");
 
 // declare global variables
 var timer = 60;
 var qindex = 0;
 var timerId;
+
+
 
 //Display Initial page
 function openingPage() {
@@ -100,6 +107,9 @@ function showTimer() {
                 })
             }
             clearInterval(timerId)
+        } else if (qindex > 4) {
+            clearInterval(timerId)
+            showHighscores();
         }
     }, 1000)
 }
@@ -170,8 +180,30 @@ function clear() {
     }
 }
 
+function showHighscores() {
 
+    highScores.style.visibility = "visible";
+    document.querySelector(".btn").addEventListener("click", function () {
+        var name = document.querySelector(".input").value;
+        highScores.innerHTML = " ";
+        timerDisplay.innerHTML = " ";
+        allScores.style.visibility = "visible";
 
+        var tr = document.createElement("tr");
+        var tdName = document.createElement("td")
+        tdName.textContent = name;
+        var tdScore = document.createElement("td");
+        tdScore.textContent = timer;
+        var table = document.querySelector(".table");
+        tr.appendChild(tdName);
+        tr.appendChild(tdScore)
+        table.append(tr);
+
+    })
+
+}
+
+timerDisplay.innerHTML = " ";
 
 //if incorrect display incorrect + subtract 2 seconds from timer + go to next
 

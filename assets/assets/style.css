@@ -1,0 +1,7 @@
+.highScores, .allScores{
+    visibility: hidden;
+}
+
+table{
+    border-spacing: 10px;
+}
