@@ -1,29 +1,29 @@
 // create questions as objects\
 var questions = [
     {
-        title: "This is the first question:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 1"
+        title: "Which of the following is not a Javascript data type?",
+        choices: ["boolean", "number", "function", "string"],
+        answer: "function"
     },
     {
-        title: "Example Question 2:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 3"
+        title: "Which symbol/s are used for comments in Javascript?",
+        choices: ["//", "( )", "--", "!"],
+        answer: "//"
     },
     {
-        title: "Example Question 3:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 2"
+        title: "Which symbol/s are used for the strict equality operator?",
+        choices: ["!=", "==", "===", "+="],
+        answer: "==="
     },
     {
-        title: "Example Question 4:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 3"
+        title: "How would you assign a variable that will have the same value throughout the whole code?",
+        choices: ["var name", "let name", "if name", "const name"],
+        answer: "const name"
     },
     {
-        title: "Example Question 5:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "Choice 4"
+        title: "Which method is used to add or append one or more elements to the end of an Array?",
+        choices: ["push", "get", "add", "goTo"],
+        answer: "push"
     }
 ];
 
@@ -48,10 +48,15 @@ var highScores = document.querySelector(".highScores");
 
 var allScores = document.querySelector(".allScores");
 
+var newGame = document.querySelector(".newGame");
+
+let scoresArray= [];
+
 // declare global variables
 var timer = 60;
 var qindex = 0;
 var timerId;
+
 
 
 
@@ -69,8 +74,12 @@ function openingPage() {
 
 //FUNCTION FOR WHEN START BUTTON IS CLICKED//
 function startQuiz() {
+
+    timer = 60;
     qindex = 0;
     //calls showTimer function
+    allScores.style.visibility = "hidden";
+
     showTimer();
 
     //displays questions
@@ -84,10 +93,11 @@ function startQuiz() {
         var scoresTitle = document.createElement("p").innerHTML = "High Scores!"
         var highScores = document.createElement("input")
         document.querySelector(".results").appendChild(p)
+        let personScore = localStorage.getItem(tdName.textContent)
+        highScores.append(personScore)
+
     }
-
 }
-
 
 //showTimer FUNCTION CREATED//
 function showTimer() {
@@ -190,27 +200,24 @@ function showHighscores() {
         highScores.innerHTML = " ";
         timerDisplay.innerHTML = " ";
         allScores.style.visibility = "visible";
-
         var tr = document.createElement("tr");
         var tdName = document.createElement("td")
         tdName.textContent = name;
         var tdScore = document.createElement("td");
         tdScore.textContent = timer;
+        //-----------store score------------
+        localStorage.setItem("scores", tdScore.textContent)
+       scoresArray.push(tdscore.textContent)
         var table = document.querySelector(".table");
         tr.appendChild(tdName);
         tr.appendChild(tdScore)
         table.append(tr);
-
     })
-
 }
+document.querySelector(".newGame").addEventListener("click", startQuiz)
 
 
-// function localSave{
 
-// var store = localStorage.setItem('tdName + tdScore', JSON.stringify(tdName, tdScore));
-// console.log(store);
-// }
 
 
 timerDisplay.innerHTML = " ";
