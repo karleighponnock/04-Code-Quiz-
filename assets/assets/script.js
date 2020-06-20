@@ -205,14 +205,15 @@ function showHighscores() {
 
 }
 
+
+// function localSave{
+
+// var store = localStorage.setItem('tdName + tdScore', JSON.stringify(tdName, tdScore));
+// console.log(store);
+// }
+
+
 timerDisplay.innerHTML = " ";
-
-//if incorrect display incorrect + subtract 2 seconds from timer + go to next
-
-
-//Stop Quiz if timer runs out or all questions are complete
-
-//display results
 
 
 
