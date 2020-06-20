@@ -58,7 +58,9 @@ var timerId;
 //Display Initial page
 function openingPage() {
     startText.textContent = "Welcome to the quiz!";
+    startText.classList.add("startText");
     startBtn.textContent = "Start Here";
+    startBtn.classList.add("startBtn");
     containerEl.appendChild(startText);
     containerEl.appendChild(startBtn);
 }

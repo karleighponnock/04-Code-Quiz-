@@ -5,3 +5,62 @@
 table{
     border-spacing: 10px;
 }
+
+.timer{
+    color: red;
+    text-align: center;
+    font-size: 20px ;
+    margin-top: 10px;
+}
+
+.container{
+    text-align: center;
+}
+
+p{
+  font-size: 20px;
+    color: seagreen;
+}
+
+.choiceBtn, .startBtn, .btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+   margin: 5px;
+   border-radius: 5px;
+}
+
+
+.choiceBtn:hover, .startBtn:hover, .btn:hover{
+    background-color: greenyellow;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+   border-radius: 5px;
+}
+
+
+
+.startText{
+    color: #4CAF50 ;
+    text-shadow: black;
+    text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+
+.highScores{
+    text-align: center;
+}
+
+.message{
+    text-align: center;
+    font-size: 25px;
+    color:green;
+}
+
+.input:focus{
+color: red;
+}
